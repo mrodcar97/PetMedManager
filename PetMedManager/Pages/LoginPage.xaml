@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PetMedManager.LoginPage" 
+             BackgroundColor="#1A1A1A">
+    <!-- Color de fondo negro -->
+
+    <!-- Contenedor principal -->
+    <StackLayout VerticalOptions="Start" HorizontalOptions="Center">
+
+        <!-- Logo de la aplicación -->
+        <Image Source="logo_proyecto.png" HeightRequest="300" WidthRequest="300" Margin="0,60,0,60" VerticalOptions="Start"/>
+        
+        <Label x:Name="errorLabel" Text="Error" TextColor="#C0211A" Margin="0,10,0,10" HorizontalOptions="Center" IsVisible="False"/>
+
+        <!-- Campos de entrada para usuario y contraseña -->
+        <Entry x:Name="userEntry" Placeholder="Usuario" BackgroundColor="#282828" TextColor="#FFFFFF" PlaceholderColor="#808080" Margin="0,0,0,20"/>
+        <Entry x:Name="passEntry" Placeholder="Contraseña" BackgroundColor="#282828" TextColor="#FFFFFF" IsPassword="True" PlaceholderColor="#808080" Margin="0,0,0,20"/>
+        
+        <!-- Botón de inicio de sesión -->
+        <Button Text="Iniciar sesión" BackgroundColor="#007ACC" TextColor="#FFFFFF" Margin="0,0,0,20" Clicked="OnShowUsersClicked"/>
+
+        <!-- Enlace para recuperar contraseña o registrarse -->
+        <Label x:Name="etiqueta" Text="¿Olvidaste tu contraseña?" TextColor="#007ACC" Margin="0,0,0,5" HorizontalOptions="Center"/>
+
+    </StackLayout>
+
+</ContentPage>

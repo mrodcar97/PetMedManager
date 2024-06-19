@@ -1,7 +1,6 @@
 ﻿using System.Net;
 using System.Net.Http.Json;
 using Domain;
-using Microsoft.Extensions.DependencyInjection;
 using PetMedManager.Pages;
 
 namespace PetMedManager
@@ -32,7 +31,8 @@ namespace PetMedManager
                 {
                     Email = email,
                     Password = password,
-                    Rango = "A"
+                    PersonId = null,
+                    Clinics = null
                 };
 
                 var response = await _httpClient.PostAsJsonAsync("api/Auth/login", user);
@@ -45,9 +45,18 @@ namespace PetMedManager
                     {
                         // Usar el token de acceso obtenido, por ejemplo, almacenarlo en la aplicación para futuras solicitudes
                         await SecureStorage.SetAsync("AuthToken", loginResponse.token);
-                        var mainMenu = _serviceProvider.GetRequiredService<MainMenu>();
-                        await Navigation.PushAsync(mainMenu);
-
+                        var Auth = new AuthService();
+                        var userRol = await Auth.GetRolClaimAsync();
+                        if (userRol.Equals("Admin"))
+                        {
+                            var mainMenu = _serviceProvider.GetRequiredService<MainAdminMenu>();
+                            await Navigation.PushAsync(mainMenu);
+                        }
+                        else if (userRol.Equals("Veterinario"))
+                        {
+                            var mainMenu = _serviceProvider.GetRequiredService<MainVetMenu>();
+                            await Navigation.PushAsync(mainMenu);
+                        }
                     }
                     else
                     {

@@ -29,5 +29,27 @@ namespace PetMedManager
 
             return new ClaimsPrincipal(new ClaimsIdentity(claims, "jwt"));
         }
+
+        public async Task<string> GetSerialNumberClaimAsync()
+        {
+            var claimsPrincipal = await GetClaimsPrincipalAsync();
+            var serialNumberClaim = claimsPrincipal.Claims.FirstOrDefault(c => c.Type == ClaimTypes.SerialNumber);
+
+            return serialNumberClaim?.Value;
+        } 
+        public async Task<string> GetRolClaimAsync()
+        {
+            var claimsPrincipal = await GetClaimsPrincipalAsync();
+            var rol = claimsPrincipal.Claims.FirstOrDefault(c => c.Type == ClaimTypes.Role);
+
+            return rol?.Value;
+        }
+        public async Task<string> GetDNIClaimAsync()
+        {
+            var claimsPrincipal = await GetClaimsPrincipalAsync();
+            var dni = claimsPrincipal.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier);
+
+            return dni?.Value;
+        }
     }
 }

@@ -1,0 +1,79 @@
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PetMedManager.Views.AppointmentCreateView"
+             Background="White">
+
+    <StackLayout WidthRequest="800"  Margin="0,5,0,0" Padding="5" VerticalOptions="Start" HorizontalOptions="Center">
+        <Grid WidthRequest="600" Margin="5,5,5,0" VerticalOptions="Start" HorizontalOptions="Center" Padding="6">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="200" />
+                <ColumnDefinition Width="400" />
+            </Grid.ColumnDefinitions>
+            <Entry x:Name="dniSearch" Grid.Column="0" Margin="2" Placeholder="DNI" PlaceholderColor="#4682B4" BackgroundColor="#bcd0eb" TextChanged="OnFilterTextChanged"/>
+            <Entry x:Name="nameSearch" Grid.Column="1" Margin="2" Placeholder="Nombre" PlaceholderColor="#4682B4" BackgroundColor="#bcd0eb" TextChanged="OnFilterTextChanged"/>
+        </Grid>
+
+        <!-- ListView 1 -->
+        <ListView x:Name="ClientsListView" VerticalOptions="Start" HorizontalOptions="Center" HeightRequest="200" WidthRequest="600" Margin="15,0,5,5" ItemTapped="OnClientSelected">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <Grid HeightRequest="65">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="200"/>
+                                <ColumnDefinition Width="400"/>
+                            </Grid.ColumnDefinitions>
+                            <Frame Grid.Column="0" BackgroundColor="White" BorderColor="#4682B4" CornerRadius="3">
+                                <Label HorizontalTextAlignment="Center" TextColor="Black" Text="{Binding NationalId}" Margin="2,0" FontSize="16"/>
+                            </Frame>
+                            <Frame Grid.Column="1"  BackgroundColor="#B0C4DE" BorderColor="#4682B4" CornerRadius="3" >
+                                <Label HorizontalTextAlignment="Center" TextColor="Black" Margin="2,0" FontSize="16">
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span Text="{Binding Name}" TextColor="Black"/>
+                                            <Span Text=" " />
+                                            <Span Text="{Binding Surname}" TextColor="Black"/>
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+                            </Frame>
+                        </Grid>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+        <Grid WidthRequest="900" Margin="5,5,5,0" VerticalOptions="Start" HorizontalOptions="Center" >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="450" />
+                <ColumnDefinition Width="450" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <!-- Left Column -->
+            <Label Text="Mascota" Grid.Column="0" Grid.Row="0" HorizontalOptions="Center" Margin="5" TextColor="Black"/>
+            <Picker x:Name="PetPicker" Grid.Column="0" Grid.Row="1" HorizontalOptions="Center" WidthRequest="250" Margin="0,5,5,15" BackgroundColor="#bcd0eb" TextColor="Black"/>
+            <Label Text="Dia de la cita" Grid.Column="0" Grid.Row="2" HorizontalOptions="Center" Margin="0,5,5,0" TextColor="Black"/>
+            <DatePicker x:Name="DayPicker" Grid.Column="0" Grid.Row="3" HorizontalOptions="Center" WidthRequest="250" Margin="0,5,5,15" Format="yyyy-MM-dd" BackgroundColor="#bcd0eb" TextColor="Black"/>
+            <Label Text="Hora de la cita" Grid.Column="0" Grid.Row="4" HorizontalOptions="Center" Margin="0,5,5,0" TextColor="Black"/>
+            <TimePicker x:Name="TimePicker" Grid.Column="0" Grid.Row="5" HorizontalOptions="Center" Margin="0,5,5,5" BackgroundColor="#bcd0eb" TextColor="Black"/>
+
+            <!-- Right Column -->
+            <Label Text="Titulo de la cita" Grid.Column="1" Grid.Row="0" HorizontalOptions="Center" Margin="0,5,5,5" TextColor="Black"/>
+            <Entry x:Name="AppointmentTitle" Grid.Column="1" Grid.Row="1" HorizontalOptions="Center" WidthRequest="400" Margin="0,5,5,15" BackgroundColor="#bcd0eb" TextColor="Black"/>
+            <Label Text="Descripcion de la cita" Grid.Column="1" Grid.Row="2" HorizontalOptions="Center" Margin="0,0,5,5" TextColor="Black"/>
+            <Entry x:Name="AppointmentDescription" Grid.Column="1" Grid.Row="3" VerticalTextAlignment="Start" HorizontalOptions="Center" WidthRequest="400" HeightRequest="100" Margin="0,5,5,5" BackgroundColor="#bcd0eb" TextColor="Black"/>
+            <Label x:Name="ErrorLabel" Grid.Column="0" Grid.Row="6" HorizontalOptions="Center" Margin="0,0,5,20" TextColor="LightCoral"/>
+            <Button x:Name="Guardar" Grid.Column="0" Grid.Row="7" Text="Guardar" WidthRequest="100"  BorderWidth="2" Margin="0,30,5,5" Clicked="OnGuardarClicked" TextColor="#4682B4" BorderColor="#4682B4" BackgroundColor="Transparent"/>
+            <Button Clicked="OnCancelClicked" Grid.Column="1" Grid.Row="7" Text="Cancelar" WidthRequest="100" Margin="10,20,5,5" BorderWidth="2" TextColor="#4682B4" BorderColor="#4682B4" BackgroundColor="Transparent"/>
+        </Grid>
+    </StackLayout>
+</ContentView>

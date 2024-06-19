@@ -1,0 +1,69 @@
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+          xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+          x:Class="PetMedManager.Views.MainClientView"
+             BackgroundColor="White">
+    <StackLayout WidthRequest="1460" Margin="30,5,0,0" Padding="0" HorizontalOptions="Start">
+        <Label Text="Lista de clientes" TextColor="Black" FontSize="24" HorizontalOptions="Center" Margin="0,20,0,20"/>
+        <Grid WidthRequest="1460" Margin="20,5,5,0" Padding="6">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="250" />
+                <ColumnDefinition Width="500" />
+                <ColumnDefinition Width="250" />
+                <ColumnDefinition Width="250" />
+                <ColumnDefinition Width="150" />
+                <ColumnDefinition Width="150" />
+            </Grid.ColumnDefinitions>
+            <Entry x:Name="dniSearch" Grid.Column="0" Margin="2" Placeholder="DNI" BackgroundColor="#bcd0eb" PlaceholderColor="#4682B4" TextChanged="OnFilterTextChanged"/>
+            <Entry x:Name="nameSearch" Grid.Column="1" Margin="2" Placeholder="Nombre" BackgroundColor="#bcd0eb" PlaceholderColor="#4682B4" TextChanged="OnFilterTextChanged"/>
+            <Entry x:Name="emailSearch"  Grid.Column="2" Margin="2" Placeholder="Email" BackgroundColor="#bcd0eb" PlaceholderColor="#4682B4" TextChanged="OnFilterTextChanged"/>
+            <Entry x:Name="phoneSearch" Grid.Column="3" Margin="2" Placeholder="Telefono" BackgroundColor="#bcd0eb" PlaceholderColor="#4682B4" TextChanged="OnFilterTextChanged"/>
+            <Button Grid.Column="5" Text="+" FontSize="20" FontAttributes="Bold" HeightRequest="20" WidthRequest="40" Margin="0,10,0,0" HorizontalOptions="End" CornerRadius="6"  TextColor="#4682B4" BorderWidth="2" BorderColor="#4682B4" BackgroundColor="Transparent" Clicked="OnRegisterClicked"/>
+        </Grid>
+
+        <ListView x:Name="ClientsListView" Background="Transparent" WidthRequest="1460" Margin="15,0,5,5">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell >
+                        <Grid HeightRequest="70">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="250" />
+                                <ColumnDefinition Width="500" />
+                                <ColumnDefinition Width="250" />
+                                <ColumnDefinition Width="250" />
+                                <ColumnDefinition Width="90" />
+                                <ColumnDefinition Width="90" />
+                            </Grid.ColumnDefinitions>
+                            <Frame Grid.Column="0" BackgroundColor="White" BorderColor="#4682B4" CornerRadius="3" >
+                                <Label HorizontalTextAlignment="Center" Text="{Binding NationalId}" TextColor="Black" Margin="2,0" FontSize="16"/>
+                            </Frame>
+                            <Frame Grid.Column="1" BackgroundColor="#B0C4DE" BorderColor="#4682B4" CornerRadius="3" >
+                                <!-- LightSteelBlue -->
+                                <Label HorizontalTextAlignment="Center" Margin="2,0" FontSize="16" TextColor="Black">
+                                    <Label.FormattedText >
+                                        <FormattedString>
+                                            <Span Text="{Binding Name}" TextColor="Black" />
+                                            <Span Text=" " />
+                                            <Span Text="{Binding Surname}" TextColor="Black"/>
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+                            </Frame>
+                            <Frame Grid.Column="2" BackgroundColor="White" BorderColor="#4682B4" CornerRadius="3" >
+                                <Label HorizontalTextAlignment="Center" Text="{Binding Email}" Margin="5,0" FontSize="16" TextColor="Black"/>
+                            </Frame>
+                            <Frame Grid.Column="3" BackgroundColor="#B0C4DE" BorderColor="#4682B4" CornerRadius="3" >
+                                <Label HorizontalTextAlignment="Center" Text="{Binding Phone}" Margin="5,0" FontSize="16" TextColor="Black"/>
+                            </Frame>
+                            <Frame Grid.Column="4" BackgroundColor="White" BorderColor="#4682B4" CornerRadius="3" >
+                                <Button x:Name="Borrar" BackgroundColor="Transparent" ImageSource="eliminar_usuario.png" WidthRequest="5" HeightRequest="1" HorizontalOptions="Center" Margin="1" Clicked="OnDeleteClicked"/>
+                            </Frame>
+                            <Frame Grid.Column="5" BackgroundColor="White" BorderColor="#4682B4" CornerRadius="3">
+                                <Button x:Name="Editar" BackgroundColor="Transparent" ImageSource="editar_usuario.png" WidthRequest="5" HeightRequest="1" HorizontalOptions="Center" Margin="1" Clicked="OnModifyClicked"/>
+                            </Frame>
+                        </Grid>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </StackLayout>
+</ContentView>

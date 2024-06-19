@@ -1,6 +1,8 @@
-﻿using Microsoft.Extensions.Logging;
+using Syncfusion.Maui.Core.Hosting;
+using Microsoft.Extensions.Logging;
 using PetMedManager.Views;
 using PetMedManager.Pages;
+using CommunityToolkit.Maui;
 
 namespace PetMedManager
 {
@@ -11,6 +13,9 @@ namespace PetMedManager
             var builder = MauiApp.CreateBuilder();
             builder
                 .UseMauiApp<App>()
+            .ConfigureSyncfusionCore()
+            // Initialize the .NET MAUI Community Toolkit by adding the below line of code
+                .UseMauiCommunityToolkit()
                 .ConfigureFonts(fonts =>
                 {
                     fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
@@ -19,10 +24,21 @@ namespace PetMedManager
 
             builder.Services.AddHttpClient("DefaultClient", client =>
             {
-                client.BaseAddress = new Uri("http://localhost:5184");
+                client.BaseAddress = new Uri("https://petmedmanagerapi.azurewebsites.net/");
             });
+
+            builder.Services.AddTransient<HistoryPetView>();
+            builder.Services.AddTransient<PetRegisterView>();
+            builder.Services.AddTransient<MainPetView>();
+            builder.Services.AddTransient<HomeVetView>();
+            builder.Services.AddTransient<ShiftMainView>();
+            builder.Services.AddTransient<AppointmentCreateView>();
+            builder.Services.AddTransient<AppointmentMainView>();
+            builder.Services.AddTransient<ClientRegisterView>();
             builder.Services.AddTransient<DailyScheduleView>();
-            builder.Services.AddTransient<MainMenu>();
+            builder.Services.AddTransient<MainClientView>();
+            builder.Services.AddTransient<MainVetMenu>();
+            builder.Services.AddTransient<MainAdminMenu>();
             builder.Services.AddTransient<LoginPage>();
 
 #if DEBUG

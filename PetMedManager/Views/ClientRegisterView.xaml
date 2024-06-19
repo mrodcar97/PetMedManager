@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:behaviors="clr-namespace:PetMedManager.Behaviors"
+    x:Class="PetMedManager.Views.ClientRegisterView"
+    BackgroundColor="White">
+
+    <Grid WidthRequest="750" Padding="0" HorizontalOptions="Center" Margin="0,30,1,50" >
+        <!-- Cambia el color aquí -->
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="400"/>
+            <ColumnDefinition Width="300"/>
+        </Grid.ColumnDefinitions>
+
+        <!-- Primera columna -->
+        <Label Text="DNI" HorizontalOptions="Center" Margin="10" Grid.Row="0" Grid.Column="0" TextColor="Black"/>
+        <Entry x:Name="DNIEntry" MaxLength="9" WidthRequest="300" Grid.Row="1" Grid.Column="0" TextColor="Black" BackgroundColor="#bcd0eb"/>
+
+        <Label Text="Nombre" HorizontalOptions="Center" Margin="10" Grid.Row="2" Grid.Column="0" TextColor="Black"/>
+        <Entry x:Name="NombreEntry" MaxLength="45" WidthRequest="300" Grid.Row="3" Grid.Column="0" TextColor="Black" BackgroundColor="#bcd0eb"/>
+
+        <Label Text="Apellidos" HorizontalOptions="Center" Margin="10" Grid.Row="4" Grid.Column="0" TextColor="Black"/>
+        <Entry x:Name="ApellidoEntry" MaxLength="100" WidthRequest="300" Grid.Row="5" Grid.Column="0" TextColor="Black" BackgroundColor="#bcd0eb"/>
+
+        <Label Text="Direccion" HorizontalOptions="Center" Margin="10" Grid.Row="6" Grid.Column="0" TextColor="Black"/>
+        <Entry x:Name="DireccionEntry" MaxLength="100" WidthRequest="300" Grid.Row="7" Grid.Column="0" TextColor="Black" BackgroundColor="#bcd0eb"/>
+
+        <Label Text="Telefono" HorizontalOptions="Center" Margin="10" Grid.Row="8" Grid.Column="0" TextColor="Black"/>
+        <Entry x:Name="TelefonoEntry" MaxLength="9" HorizontalOptions="Center" WidthRequest="300" Grid.Row="9" Grid.Column="0" TextColor="Black" BackgroundColor="#bcd0eb">
+            <Entry.Behaviors>
+                <behaviors:NumericEntryBehavior />
+            </Entry.Behaviors>
+        </Entry>
+        <!-- Segunda columna -->
+        <Label Text="Provincia" HorizontalOptions="Center" Margin="10" Grid.Row="0" Grid.Column="2" TextColor="Black"/>
+        <Entry x:Name="ProvinciaEntry" MaxLength="45" WidthRequest="300" Grid.Row="1" Grid.Column="2" TextColor="Black" BackgroundColor="#bcd0eb"/>
+
+        <Label Text="Localidad" HorizontalOptions="Center" Margin="10" Grid.Row="2" Grid.Column="2" TextColor="Black"/>
+        <Entry x:Name="LocalidadEntry" MaxLength="100" WidthRequest="300" Grid.Row="3" Grid.Column="2" TextColor="Black" BackgroundColor="#bcd0eb"/>
+
+        <Label Text="Email" HorizontalOptions="Center" Margin="10" Grid.Row="4" Grid.Column="2" TextColor="Black"/>
+        <Entry x:Name="EmailEntry" MaxLength="100" WidthRequest="300" Grid.Row="5" Grid.Column="2" Keyboard="Email" TextColor="Black" BackgroundColor="#bcd0eb"/>
+
+        <Label Text="Fecha Nacimiento" HorizontalOptions="Center" Margin="10" Grid.Row="6" Grid.Column="2" TextColor="Black"/>
+        <DatePicker x:Name="FechaNacimientoEntry" WidthRequest="300" Grid.Row="7" Grid.Column="2" Format="yyyy-MM-dd" TextColor="Black" BackgroundColor="#bcd0eb">
+            <DatePicker.Behaviors>
+                <behaviors:DatePickerBehavior />
+            </DatePicker.Behaviors>
+        </DatePicker>
+
+        <Label x:Name="ErrorLabel" HorizontalOptions="Center" Margin="0,20,0,0" IsVisible="True" Grid.Row="11" TextColor="Coral"/>
+
+        <!-- Botones -->
+        <Button Text="Guardar" Clicked="OnGuardarClicked" WidthRequest="100" Grid.Row="12" Grid.Column="0" Margin="60" TextColor="#4682B4" BorderWidth="2" BorderColor="#4682B4" BackgroundColor="Transparent"/>
+        <Button Text="Cancelar" Clicked="OnCancelClicked" WidthRequest="100" Grid.Row="12" Grid.Column="2" Margin="60" TextColor="#4682B4" BorderWidth="2" BorderColor="#4682B4" BackgroundColor="Transparent"/>
+    </Grid>
+</ContentView>

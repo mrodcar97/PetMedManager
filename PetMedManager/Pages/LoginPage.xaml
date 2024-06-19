@@ -2,7 +2,9 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="PetMedManager.LoginPage" 
-             BackgroundColor="#1A1A1A">
+             BackgroundColor="WhiteSmoke"
+             Shell.NavBarIsVisible="False">
+    
     <!-- Color de fondo negro -->
 
     <!-- Contenedor principal -->
@@ -14,8 +16,8 @@
         <Label x:Name="errorLabel" Text="Error" TextColor="#C0211A" Margin="0,10,0,10" HorizontalOptions="Center" IsVisible="False"/>
 
         <!-- Campos de entrada para usuario y contraseña -->
-        <Entry x:Name="userEntry" Placeholder="Usuario" BackgroundColor="#282828" TextColor="#FFFFFF" PlaceholderColor="#808080" Margin="0,0,0,20"/>
-        <Entry x:Name="passEntry" Placeholder="Contraseña" BackgroundColor="#282828" TextColor="#FFFFFF" IsPassword="True" PlaceholderColor="#808080" Margin="0,0,0,20"/>
+        <Entry x:Name="userEntry" Placeholder="Usuario"  TextColor="#4682B4"  Margin="0,0,0,20" PlaceholderColor="#4682B4"  BackgroundColor="#bcd0eb"/>
+        <Entry x:Name="passEntry" Placeholder="Contraseña" TextColor="#4682B4" IsPassword="True"  Margin="0,0,0,20" PlaceholderColor="#4682B4"  BackgroundColor="#bcd0eb"/>
         
         <!-- Botón de inicio de sesión -->
         <Button Text="Iniciar sesión" BackgroundColor="#007ACC" TextColor="#FFFFFF" Margin="0,0,0,20" Clicked="OnShowUsersClicked"/>

@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PetMedManager.Views.HistoryPetView"
+             Background="White">
+
+    <StackLayout WidthRequest="1460" Margin="30,5,0,0" Padding="0" HorizontalOptions="Center">
+
+        <Grid WidthRequest="1460" Margin="690,5,5,0" HorizontalOptions="Center" Padding="6">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="250" />
+                <ColumnDefinition Width="200" />
+                <ColumnDefinition Width="450" />
+            </Grid.ColumnDefinitions>
+            <Entry x:Name="dniSearch" Grid.Column="0" Margin="2" Placeholder="DNI propietario" BackgroundColor="#bcd0eb" PlaceholderColor="#4682B4" TextChanged="OnFilterTextChanged"/>
+            <Entry x:Name="nameSearch" Grid.Column="1" Margin="2" Placeholder="Nombre" BackgroundColor="#bcd0eb" PlaceholderColor="#4682B4" TextChanged="OnFilterTextChanged"/>
+        </Grid>
+
+        <ListView x:Name="ClientsListView" HorizontalOptions="CenterAndExpand" Background="Transparent" WidthRequest="1460" Margin="350,0,5,5" ItemTapped="OnItemTapped">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell >
+                        <Grid HeightRequest="60">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="250" />
+                                <ColumnDefinition Width="200" />
+                                <ColumnDefinition Width="200" />
+                            </Grid.ColumnDefinitions>
+                            <Frame Grid.Column="0" BackgroundColor="White" BorderColor="#4682B4" CornerRadius="3" >
+                                <Label HorizontalTextAlignment="Center" Text="{Binding OwnerId}" TextColor="Black" Margin="2,0" FontSize="16"/>
+                            </Frame>
+                            <Frame Grid.Column="1" BackgroundColor="#B0C4DE" BorderColor="#4682B4" CornerRadius="3">
+                                <!-- LightSteelBlue -->
+                                <Label HorizontalTextAlignment="Center" Text="{Binding Name}" Margin="2,0" FontSize="16" TextColor="Black"/>
+                            </Frame>
+                            <Frame Grid.Column="2" BackgroundColor="White" BorderColor="#4682B4" CornerRadius="3" >
+                                <Label HorizontalTextAlignment="Center" Text="{Binding Species}" Margin="5,0" FontSize="16" TextColor="Black"/>
+                            </Frame>
+                        </Grid>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+        <Grid WidthRequest="200" HeightRequest="600" Padding="0" HorizontalOptions="Center" Margin="0,30,1,50" >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="400"/>
+            </Grid.ColumnDefinitions>
+
+            <Grid Grid.Column="0" WidthRequest="1000" HeightRequest="600" Padding="0" HorizontalOptions="Center" Margin="0,30,1,50" >
+                <!-- Cambia el color aquí -->
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="400"/>
+                    <ColumnDefinition Width="300"/>
+                </Grid.ColumnDefinitions>
+
+                <!-- Primera columna -->
+                <Label Text="Nombre" HorizontalOptions="Start" Margin="10" Grid.Row="0" Grid.Column="0" TextColor="Black" />
+                <Entry x:Name="NombreEntry" HorizontalOptions="Start" MaxLength="9" WidthRequest="300" Grid.Row="1" Grid.Column="0" TextColor="Black" BackgroundColor="#bcd0eb" IsEnabled="False"/>
+
+                <Label Text="Especie" HorizontalOptions="Start" Margin="10" Grid.Row="2" Grid.Column="0" TextColor="Black"/>
+                <Entry x:Name="EspecieEntry" HorizontalOptions="Start" MaxLength="45" WidthRequest="300" Grid.Row="3" Grid.Column="0" TextColor="Black" BackgroundColor="#bcd0eb" IsEnabled="False"/>
+
+                <Label Text="Raza" HorizontalOptions="Start" Margin="10" Grid.Row="4" Grid.Column="0" TextColor="Black"/>
+                <Entry x:Name="RazaEntry" HorizontalOptions="Start" MaxLength="100" WidthRequest="300" Grid.Row="5" Grid.Column="0" TextColor="Black" BackgroundColor="#bcd0eb" IsEnabled="False"/>
+                <!-- Segunda columna -->
+                <Label Text="Dni propietario" HorizontalOptions="Start" IsEnabled="False" Margin="10" Grid.Row="6" Grid.Column="0" TextColor="Black"/>
+                <Entry x:Name="propietarioEntry" HorizontalOptions="Start" IsEnabled="False"  MaxLength="45" WidthRequest="300" Grid.Row="7" Grid.Column="0" TextColor="Black" BackgroundColor="#bcd0eb"/>
+            </Grid>
+            <ScrollView Orientation="Vertical">
+                <StackLayout x:Name="history" Orientation="Vertical"/>
+            </ScrollView>
+        </Grid>
+    </StackLayout>
+</ContentView>

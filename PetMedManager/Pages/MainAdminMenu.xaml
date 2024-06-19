@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:views="clr-namespace:PetMedManager.Views"
+             x:Class="PetMedManager.Pages.MainAdminMenu"
+             Title="MenuPrincipal"
+             BackgroundColor="WhiteSmoke">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <!-- Header with Menu -->
+        <Grid Grid.Row="0" Grid.ColumnSpan="2" BackgroundColor="#0086b3" Padding="5">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="580" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <!-- Logo -->
+            <Image Source="logo_proyecto.png" Grid.Column="0" HeightRequest="60" WidthRequest="200" VerticalOptions="Center" HorizontalOptions="Start"/>
+            <!-- Menu Buttons -->
+            <StackLayout Orientation="Horizontal" Grid.Column="2" HorizontalOptions="Start" VerticalOptions="Center" Spacing="20">
+                <Button Text="Clientes" Clicked="ShowMainClientView" FontSize="16" BackgroundColor="White" TextColor="#4682B4" BorderColor="White" BorderWidth="1" CornerRadius="5"/>
+                <Button Text="Citas" Clicked="ShowCalendarMainView" FontSize="16" BackgroundColor="White" TextColor="#4682B4" BorderColor="White" BorderWidth="1" CornerRadius="5"/>
+                <Button Text="Turnos" Clicked="ShowShiftMainView" FontSize="16" BackgroundColor="White" TextColor="#4682B4" BorderColor="White" BorderWidth="1" CornerRadius="5"/>
+            </StackLayout>
+            <Button Text="Cerrar sesion" Clicked="ShowLoginPage" Grid.Column="2" HorizontalOptions="End" FontSize="16" BackgroundColor="White" TextColor="#4682B4" BorderColor="White" Margin="10" BorderWidth="1" CornerRadius="5"/>
+
+        </Grid>
+
+        <!-- Main Content Area -->
+        <ScrollView x:Name="MainContentArea" Grid.Row="1" Grid.Column="1" WidthRequest="1600">
+            <StackLayout x:Name="MainStackLayout" Padding="10" Margin="2">
+                <Label Text="Muestra de contenido de la aplicación" FontSize="24" HorizontalOptions="Center"/>
+                <!-- Aquí puedes añadir más contenido específico para la página de inicio -->
+            </StackLayout>
+        </ScrollView>
+    </Grid>
+</ContentPage>
